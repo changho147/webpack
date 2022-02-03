@@ -1,18 +1,22 @@
 const path = require("path");
 
 module.exports = {
-	// 단일 Entry
+	/**
+	 * entry
+	 * bundle할 시작파일을 설정
+	 * 단일, 다중으로 Entry를 설정할 수 있다
+	 *
+	 * 단일: entry: "./src/index.js"
+	 *
+	 * 다중: entry: {index: "./src/index.js", component: "./src/component.js"}
+	 *
+	 **/
 	entry: "./src/index.js",
 
-	// 다중 Entry
-	// entry: {
-	// 	index: "./src/index.js",
-	// 	component: "./src/component.js"
-	// }
-
-	// filename은 필수, path는 옵션
-
 	/**
+	 * output
+	 * filename은 필수, path는 옵션
+	 *
 	 * filename options
 	 * [name].bundle.js => 결과파일 이름에 entry 속성을 포함
 	 * [id].bundle.js => 결과파일 이름에 웹팩 내부적으로 사용하는 모듈 ID를 포함하는 옵션
@@ -23,5 +27,4 @@ module.exports = {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, './dist')
 	}
-
 }
