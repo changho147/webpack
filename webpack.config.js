@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
+	mode: "none",
+
 	/**
 	 * entry
 	 * bundle할 시작파일을 설정
@@ -58,8 +60,24 @@ module.exports = {
 	 * plugin은 웹팩의 결과물의 형태를 변환하는 역할
 	 **/
 	plugins: [
-		new HtmlWebpackPlugin(),
+		new HtmlWebpackPlugin({
+			template: "index.html",
+		}),
 		new webpack.ProgressPlugin(),
 		// new BundleAnalyzerPlugin()
-	]
+	],
+
+	/**
+	 * webpack-dev-server
+	 * HMR(Hot Module Replacement)를 지원해서 수정한 파일이 실시간적용
+	 * webpack serve 명령어로 실행. 파일로 생성되지 않고 메모리에 저장되기 때문에 빌드된 결과 파일을 생성하지 않음
+	 *
+	 * port option 외, 많은 기능 option으로 제공 https://webpack.js.org/configuration/dev-server/
+	 *
+	 * devtool(source map) => 빌드한 파일과 원본 파일을 서로 연결시켜주는 옵션 https://webpack.js.org/configuration/devtool/#devtool
+	 **/
+	devServer: {
+		port: 8080
+	},
+	devtool: "eval-cheap-module-source-map"
 }
