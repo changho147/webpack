@@ -1,4 +1,7 @@
 const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
 	/**
@@ -37,7 +40,6 @@ module.exports = {
 	 *
 	 * loader는 파일을 해석하고 변환하는 과정에 관여
 	 **/
-
 	module: {
 		rules: [
 			{
@@ -46,4 +48,17 @@ module.exports = {
 			}
 		],
 	},
+
+	/**
+	 * plugin
+	 * 생성자 함수로 생성된 객체 인스턴스만 추가 할 수 있다
+	 * webpack site에 다양한 plugin 소개 => https://webpack.js.org/plugins/
+	 *
+	 * plugin은 웹팩의 결과물의 형태를 변환하는 역할
+	 **/
+	plugins: [
+		new HtmlWebpackPlugin(),
+		new webpack.ProgressPlugin(),
+		// new BundleAnalyzerPlugin()
+	]
 }
