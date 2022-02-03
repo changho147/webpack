@@ -1,3 +1,5 @@
+import "./common.css";
+
 function printHello() {
     const element = document.createElement("div");
 

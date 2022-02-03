@@ -22,9 +22,28 @@ module.exports = {
 	 * [id].bundle.js => 결과파일 이름에 웹팩 내부적으로 사용하는 모듈 ID를 포함하는 옵션
 	 * [name].[hash].bundle.js => 결과파일 이름에 고유 해시 값을 붙이는 옵션
 	 * [chunkhash].bundle.js => 결과파일 이름에 웹팩의 각 모듈 내용을 기준으로 생생된 해시 값을 붙이는 옵션
+	 *
 	 **/
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, './dist')
-	}
+	},
+
+	/**
+	 * loader
+	 * rules라는 Array에 객체 추가로 loader 설정
+	 * test => loader를 적용할 파일 유형(일반적으로 정규식 사용)
+	 * use => 적용할 loader 설정 (** 오른쪽에서 왼쪽순으로 loader를 적용)
+	 *
+	 * loader는 파일을 해석하고 변환하는 과정에 관여
+	 **/
+
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				use: ["style-loader", "css-loader"]
+			}
+		],
+	},
 }
